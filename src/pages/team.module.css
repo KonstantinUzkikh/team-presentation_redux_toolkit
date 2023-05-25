@@ -1,0 +1,111 @@
+.headerStyle {
+  height: 265px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 16px;
+}
+
+.profileCardBox{
+  display: flex;
+  justify-content: center;
+}
+
+.profileCard {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 305px;
+  height: 263px;
+  gap: 16px;
+  margin: 0;
+  padding: 36px 20px 20px;
+  background: #FFFFFF;
+  border: 1px solid #F8F8F8;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 0.996045px 3.98418px rgba(51, 51, 51, 0.15);
+  color: #151317;
+  cursor: pointer;
+}
+
+.profileCard:hover {
+  box-shadow: 5px 5px 7px rgba(51, 51, 51, 0.5);
+}
+
+.avatar {
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+}
+
+.boxLike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 30px;
+  height: 28px;
+  background-color: #F8F8F8;
+  border: 1px solid #F8F8F8;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.like {
+  width: 14px;
+  height: 12px;
+  background: transparent;
+}
+
+.like:hover {
+  transform:scale(1.5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(305px,1fr));
+  gap: 20px 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 48px 80px 56px;
+  box-sizing: border-box;
+}
+
+.buttonGroup {
+  display: flex;
+  align-self: flex-end;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.noUsers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+
+  .headerStyle {
+    height: 281px;
+    /*padding: 23px 27px;*/
+  }
+
+  .grid {
+    padding: 32px 35px 32px;
+  }
+
+  .noUsers {
+    padding: 16px;
+  }
+
+  }

@@ -1,0 +1,80 @@
+.page {
+  background-color: #F5F5F5;
+  min-height: 759px;
+}
+
+.headerStyle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px 80px;
+  background-color: #512689;
+  color: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.navStyle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerContentStyle {
+  margin: -29px 108px 0;
+}
+
+.h1Style, .h2Style, .h3Style, .textStyle {
+  margin: 0;
+  padding: 0;
+}
+
+.h1Style {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 75px;
+}
+
+.h2Style {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.h3Style {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.textStyle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 900px) {
+
+  .headerStyle {
+    padding: 23px 27px;
+  }
+
+  .headerContentStyle {
+    margin: 23px 0 0;
+    order: 3;
+  }
+
+  .h1Style {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .h2Style {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .h3Style {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+}

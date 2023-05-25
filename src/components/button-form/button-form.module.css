@@ -1,0 +1,29 @@
+.button, .buttonDisabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  border: 1px solid #512689;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.button {
+  background: #512689;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.buttonDisabled {
+  background: transparent;
+  cursor: auto;
+}
+
+.button:hover {
+  font-weight: 600;
+  border: 1px solid #333333;
+  box-shadow: 5px 5px 7px rgba(51, 51, 51, 0.5);
+}

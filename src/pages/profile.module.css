@@ -1,0 +1,75 @@
+.headerStyle {
+  height: 265px;
+}
+
+.profile {
+  display: flex;
+  gap: 32px;
+}
+
+.avatar {
+  width: 187px;
+  height: 187px;
+  border-radius: 50%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mainContentStyle {
+  display: grid;
+  grid-template-columns: 188fr 630fr 130fr auto 188fr;
+  padding: 48px 0;
+  box-sizing: border-box;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 24px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+}
+
+@media screen and (max-width: 900px) {
+
+  .headerStyle {
+    height: 412px;
+  }
+
+  .profile {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .profileInfo {
+    order: -1;
+  }
+
+  .mainContentStyle {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 16px;
+    gap: 32px;
+  }
+
+  .contacts {
+    order: -1;
+  }
+}
