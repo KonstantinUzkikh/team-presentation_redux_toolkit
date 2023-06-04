@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.b4434ce2.css",
-    "main.js": "./static/js/main.610153e2.js",
+    "main.js": "./static/js/main.0dcc9030.js",
     "static/media/Roboto-Regular.ttf": "./static/media/Roboto-Regular.160d7a6ac26376e5e977.ttf",
     "static/media/exit.svg": "./static/media/exit.3c6718fb9dee8dfc1c28d79befa934e7.svg",
     "static/media/Pictogrammers-Material-Light-Eye-off.svg": "./static/media/Pictogrammers-Material-Light-Eye-off.8daa7e54db0d58f361c8d1c4e4309d97.svg",
@@ -15,10 +15,10 @@
     "static/media/Colebemis-Feather-Chevron-up.svg": "./static/media/Colebemis-Feather-Chevron-up.bce3ead5520cb74445dc3dbb4652c8f2.svg",
     "static/media/Colebemis-Feather-Chevron-down.svg": "./static/media/Colebemis-Feather-Chevron-down.144cfc94eff16ada2da932fdc8922c68.svg",
     "main.b4434ce2.css.map": "./static/css/main.b4434ce2.css.map",
-    "main.610153e2.js.map": "./static/js/main.610153e2.js.map"
+    "main.0dcc9030.js.map": "./static/js/main.0dcc9030.js.map"
   },
   "entrypoints": [
     "static/css/main.b4434ce2.css",
-    "static/js/main.610153e2.js"
+    "static/js/main.0dcc9030.js"
   ]
 }
