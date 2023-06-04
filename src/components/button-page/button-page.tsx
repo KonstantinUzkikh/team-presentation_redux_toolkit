@@ -8,18 +8,14 @@ const ButtonPage: FC<{
     srcIcon?: string;
     onClick?: () => void;
     children?: string
-  }> = ({ disabled, srcIcon, onClick, children }) => {
-
-  let isDisabled = false;
-
-  if (disabled !== undefined) isDisabled = disabled || isDisabled;
+  }> = ({ disabled = false, srcIcon, onClick, children }) => {
 
   return (
     <button
       type={'button'}
-      disabled={isDisabled}
+      disabled={disabled}
       onClick={onClick}
-      className={!isDisabled ? buttonPageLayout.button : buttonPageLayout.buttonDisabled}
+      className={disabled ? buttonPageLayout.buttonDisabled : buttonPageLayout.button}
     >
       <span className={`${pageLayout.h3Style} ${buttonPageLayout.buttonTitle}`}>
         {children !== undefined ? children : 'Показать еще'}
@@ -27,7 +23,7 @@ const ButtonPage: FC<{
       {<img
         src={srcIcon}
         alt="иконка"
-        className={!isDisabled ? buttonPageLayout.icon : isDisabled && buttonPageLayout.iconDisabled}
+        className={disabled ? buttonPageLayout.iconDisabled : buttonPageLayout.icon}
       />}
     </button>
   );

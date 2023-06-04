@@ -8,21 +8,17 @@ const ButtonForm: FC<{
   disabled?: boolean;
   onClick?: () => void;
   children?: string
-}> = ({ value, type, disabled, onClick, children }) => {
-
-  let isDisabled = false;
-
-  if (disabled !== undefined) isDisabled = disabled || isDisabled;
+}> = ({ value = '', type = 'submit', disabled = false, onClick, children }) => {
 
   return (
     <button
-      type={type || 'submit'}
-      value={value || ''}
-      disabled={isDisabled}
+      type={type}
+      value={value}
+      disabled={disabled}
       onClick={onClick}
-      className={!disabled ? buttonFormLayout.button : buttonFormLayout.buttonDisabled}
+      className={disabled ? buttonFormLayout.buttonDisabled : buttonFormLayout.button}
     >
-      {children !== undefined && <span>{children}</span>}
+      {children && <span>{children}</span>}
     </button>
   );
 }

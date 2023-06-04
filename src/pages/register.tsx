@@ -5,8 +5,6 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { initUser, isLogined } from '../utils';
 import { useFormAndValidation } from '../hooks/useFormAndValidation';
 import ButtonForm from '../components/button-form/button-form';
-import { useDispatch, useSelector } from '../stor/hooks-store';
-import { getRegisterThunk } from '../stor/thunks';
 
 import pageLayout from '../pages/page.module.css';
 import formLayout from './form.module.css';
@@ -14,6 +12,8 @@ import formLayout from './form.module.css';
 import eyeOff from '../images/Pictogrammers-Material-Light-Eye-off.svg';
 import eyeOn from '../images/Pictogrammers-Material-Light-Eye.svg';
 import { TUser } from '../services/types-data';
+import { fetchRegister } from '../store/profileSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterPage: FC = () => {
 
@@ -38,13 +38,13 @@ const RegisterPage: FC = () => {
     setErrors({ name: '', email: '', password: '', rePassword: '' })
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const { users } = useSelector(state => state.users);
+  const { users } = useSelector((state: any) => state.users);
 
   const onSubmit = (evt: FormEvent) => {
     let user: TUser = initUser;
-    user = users.find(it => it.email === values.email) || user;
+    user = users.find((it: TUser) => it.email === values.email) || user;
     evt.preventDefault();
-    dispatch(getRegisterThunk(values, user, () => navigate('/team')));
+    dispatch(fetchRegister({ userData: values, user: user, goPath: () => navigate('/team') }));
   }
 
   const [visibilityPassword, setVisibilityPassword] = useState(false);

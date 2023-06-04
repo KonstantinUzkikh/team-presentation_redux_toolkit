@@ -2,14 +2,12 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { useDispatch, useSelector } from '../stor/hooks-store';
-
 import ButtonHeader from '../components/button-header/button-header';
 import ButtonPage from '../components/button-page/button-page';
 import { isLogined, usersOnPageLimit } from '../utils';
 
 import { TUser } from '../services/types-data';
-import { decreasePage, increasePage, userToggleLike } from '../stor/actions';
+import { decreasePage, increasePage, toggleLike } from '../store/usersSlice';
 
 import pageLayout from './page.module.css';
 import teamLayout from './team.module.css'
@@ -18,6 +16,7 @@ import likeActive from '../images/like-active.svg';
 import likeDisactive from '../images/like-disactive.svg';
 import chevronDown from '../images/Colebemis-Feather-Chevron-down.svg';
 import chevronUp from '../images/Colebemis-Feather-Chevron-up.svg';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TeamPresentation: FC = () => {
   return (
@@ -41,7 +40,7 @@ const ProfileCard: FC<{ user: TUser }> = ({ user }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const goLink = useCallback(() => { navigate(`/team/${id}`) }, []);
 
-  const onToggle = () => dispatch(userToggleLike(id)); // eslint-disable-line react-hooks/exhaustive-deps
+  const onToggle = () => dispatch(toggleLike(id)); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div onClick={goLink} className={teamLayout.profileCardBox}>
@@ -68,25 +67,25 @@ const TeamPage: FC = () => {
 
   if (!isLogined()) return <Navigate to="/login" state={{ from: location }} />;
 
-  const { currentPage, users } = useSelector(state => state.users);
+  const { currentPage, users } = useSelector((state: any) => state.users);
   const [usersOnPage, setUsersOnPage] = useState<TUser[]>([]);
 
-  const [isNoLikes, setIsNoLikesset] = useState<number>(1);
+  const [likesState, setLikesState] = useState<'init' | 'likes' | 'empty'>('init');
 
-  useEffect(() => { (isNoLikes === 3) && sessionStorage.removeItem('likeIds') }, [isNoLikes]);
+  useEffect(() => { (likesState === 'empty') && sessionStorage.removeItem('likeIds') }, [likesState]);
 
   useEffect(() => {
     setUsersOnPage(
-      users.filter((it, index) =>
+      users.filter((it: TUser, index: number) =>
         (index < currentPage * usersOnPageLimit) && (index >= (currentPage - 1) * usersOnPageLimit))
     );
 
-      const arr = users.filter(it => it.like === true)
+      const arr = users.filter((it: TUser) => it.like === true)
       if (arr.length !== 0) {
-        sessionStorage.setItem('likeIds', JSON.stringify(arr.map(it => it.id)));
-        setIsNoLikesset(2);
+        sessionStorage.setItem('likeIds', JSON.stringify(arr.map((it: TUser) => it.id)));
+        setLikesState('likes');
 
-      } else (isNoLikes !== 1) && setIsNoLikesset(3);
+      } else (likesState !== 'init') && setLikesState('empty');
 
   }, [currentPage, users]);  // eslint-disable-line react-hooks/exhaustive-deps
 

@@ -1,24 +1,24 @@
 import { ChangeEvent, Dispatch, SetStateAction, useCallback, useState } from "react";
 
-export type TInputValues = {
+export type TValues = {
   [name: string]: string;
 }
 
 export type TUseFormAndValidation = {
-  values: TInputValues;
+  values: TValues;
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  errors: TInputValues;
+  errors: TValues;
   isValid: boolean;
   resetForm: () => void;
-  setValues: Dispatch<SetStateAction<TInputValues>>;
-  setErrors: Dispatch<SetStateAction<TInputValues>>;
+  setValues: Dispatch<SetStateAction<TValues>>;
+  setErrors: Dispatch<SetStateAction<TValues>>;
   setIsValid: Dispatch<SetStateAction<boolean>>;
 }
 
-export const useFormAndValidation = (inputValues: TInputValues = {}): TUseFormAndValidation => {
-  const [ values, setValues ] = useState<TInputValues>(inputValues);
-  const [ errors, setErrors ] = useState({});
-  const [ isValid, setIsValid ] = useState(true);
+export const useFormAndValidation = (inputValues: TValues = {}): TUseFormAndValidation => {
+  const [ values, setValues ] = useState<TValues>(inputValues);
+  const [ errors, setErrors ] = useState<TValues>({});
+  const [ isValid, setIsValid ] = useState<boolean>(true);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const {name, value} = event.target;

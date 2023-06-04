@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { profileReset } from '../../store/profileSlice';
+import { deleteCookies } from '../../utils';
 
 import buttonHeaderLayout from './button-header.module.css';
-import { deleteCookies } from '../../utils';
 
 import exitIcon from '../../images/exit.svg';
 import backIcon from '../../images/back.svg';
@@ -10,10 +13,12 @@ import backIcon from '../../images/back.svg';
 const ButtonHeader: FC<{ content: 'back' | 'exit' | 'none' }> = ({ content }) => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onBack = () => navigate(-1);
 
   const onExit = () => {
+    dispatch(profileReset());
     deleteCookies();
     navigate('/');
   };

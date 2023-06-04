@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { FC, useEffect, useRef, useState } from 'react';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { useSelector } from '../stor/hooks-store';
 import ButtonHeader from '../components/button-header/button-header';
 import { isLogined } from '../utils';
 
@@ -36,9 +36,9 @@ const ProfilePage: FC = () => {
   if (!isLogined()) return <Navigate to="/login" state={{ from: location }} />;
 
   const navigate = useNavigate();
-  const id = useParams().id;
+  const { id } = useParams();
 
-  const { isLoadUsers, users } = useSelector(state => state.users);
+  const { isLoadUsers, users } = useSelector((state: any) => state.users);
 
   const userRef = useRef<TUser>();
   const [isFiltered, setIsFiltered] = useState(false);

@@ -1,19 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { FC, FormEvent, useEffect, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchLogin } from '../store/profileSlice';
 
 import { initUser, isLogined } from '../utils';
+import { useFormAndValidation } from '../hooks/useFormAndValidation';
 import ButtonForm from '../components/button-form/button-form';
-import { useDispatch, useSelector } from '../stor/hooks-store';
-import { getLoginThunk } from '../stor/thunks';
+
+import { TUser } from '../services/types-data';
 
 import pageLayout from '../pages/page.module.css';
 import formLayout from './form.module.css';
-import { useFormAndValidation } from '../hooks/useFormAndValidation';
 
 import eyeOff from '../images/Pictogrammers-Material-Light-Eye-off.svg';
 import eyeOn from '../images/Pictogrammers-Material-Light-Eye.svg';
-import { TUser } from '../services/types-data';
 
 const LoginPage: FC = () => {
 
@@ -30,13 +32,13 @@ const LoginPage: FC = () => {
 
   useEffect(() => setIsValid(false), []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const { users } = useSelector(state => state.users);
+  const { users } = useSelector((state: any) => state.users);
 
   const onSubmit = (evt: FormEvent) => {
     let user: TUser = initUser;
-    user = users.find(it => it.email === values.email) || user;
+    user = users.find((it: TUser) => it.email === values.email) || user;
     evt.preventDefault();
-    dispatch(getLoginThunk(values, user, () => navigate('/team')));
+    dispatch(fetchLogin({ userData: values, user: user, goPath: () => navigate('/team') }));
   }
 
   const [visibilityPassword, setVisibilityPassword] = useState(false);
